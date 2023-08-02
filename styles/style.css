@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&display=swap");
+* {
+  Margin: 0;
+  padding: 0;
+  font-family: "Merriweather Sans", sans-serif;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #ef6c9a;
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+}
+.navbar .container-fluid {
+  justify-content: center;
+}
+.navbar .container-fluid img {
+  height: 250px;
+  width: 200px;
+}
+.navbar .container-fluid a {
+  font-size: 100px;
+  color: white;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 3.7rem;
+  text-align: center;
+  font-weight: bold;
+  padding: 30px 20px 0px 20px;
+}
+
+h2 {
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 0px 20px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  padding: 40px 20px 0px 20px;
+}
+.cards .card {
+  display: flex;
+  flex-wrap: wrap;
+  width: 40%;
+  align-items: center;
+  border: solid 1px black;
+}
+.cards .card img {
+  height: 150px;
+  width: 150px;
+}
+.cards .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+}
+.cards .card-body .card-text {
+  text-align: center;
+}
+.cards .card-body .btn-cards {
+  background: #000000;
+  color: white;
+  padding: 4px;
+  border-radius: 10%;
+  text-decoration: none;
+}
+
+/*# sourceMappingURL=style.css.map */
