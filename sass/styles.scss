@@ -1,6 +1,10 @@
-//Fuente de google
+// //Fuente de google
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@800&display=swap');
+
+// // boostrap icon
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
 
 *{
     Margin: 0;
@@ -9,79 +13,179 @@
     box-sizing: border-box;
 }
 
-header{
-    background-color: #ef6c9a;
+main{
+    min-height: 60vh;
 }
-
-//navbar
 
 .navbar{
     display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
     justify-content: center;
-    height: 200px;
-    .container-fluid{
-        justify-content: center;
-        img{
-            height: 250px;
-            width: 200px;
-        }
+    align-items: center;
+    padding: 15px;
+    background-color: #ff9ec9;
+}
+
+.ulnavbar{
+    display: flex;
+    gap: 50px;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    li{
+        font-size: 1rem;
         a{
-            font-size: 100px;
-            color: white;
             text-decoration: none;
+            color: black;
         }
     }
 }
 
-h1{
-    font-size: 3.7rem;
-    text-align: center;
-    font-weight: bold;
-    padding: 30px 20px 0px 20px;
+.logoynombre{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 35px 20px 35px;
+    img{
+        height: 155px;
+        width: 141px;
+    } 
 }
 
-h2{
-    font-size: 2.5rem;
-    text-align: center;
-    padding: 0px 20px;
+.nombrepagina{
+    font-size: 3rem;
+    text-decoration: none;
+    color: aliceblue;
 }
 
-//inicio
+.total-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .btn-confirmar{
+        height: 40px;
+        width: 30%;
+        margin-top: 30px;
+        background-color: #ef6c9a;
+        color: rgb(0, 0, 0);
+    }
+
+    .total-productos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+    margin: 30px;
+    border: 1px solid black;
+    width: 88%;
+    font-size: 2rem;
+    }
+}
+
 
 .cards{
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
     gap: 30px;
-    justify-content: center;
-    padding: 40px 20px 0px 20px;
+    margin-top: 40px;
+    
     .card{
         display: flex;
-        flex-wrap: wrap;
-        width: 40%;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        border: solid 1px black;
-        img{
+        width: 20%;
+        padding: 20px;
+        &:hover{
+            box-shadow: -2px 2px 5px 3px #ff9ec9;
+            transition: 0.8s;
+        }
+
+        h3{
+            font-size: 1rem;
+        }
+
+        h4{
+            font-size: 1rem;
+        }
+        &-img{
             height: 150px;
             width: 150px;
         }
         &-body{
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: pink;
-            .card-text{
-                text-align: center;
-            }
-            .btn-cards{
-                background: #000000;
-                color: white;
-                padding: 4px;
-                border-radius: 10%;
-                text-decoration: none                
+            flex-direction: column;
+        }
+
+        .input-cantidad{
+            display: flex;
+            height: 2rem;
+            width: 50%;
+            margin-bottom: 1rem;
+        }
+        .btn-agregar{
+            display: flex;
+            height: 2rem;
+            width: 50%;
+            margin-bottom: 1rem;
+            background-color: rgb(0, 0, 0);
+            font-size: 1rem;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            transition: 0.8s;
+            &:hover{
+                background-color: #ff9ec9;
+                color: black;
             }
         }
     }
+}
+
+.compra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    flex-direction: column;
+    gap: 15px;
+    .btn-confirmar{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 2rem;
+        width: 30%;
+        background-color: #ff9ec9;
+        color: black;
+        font-size: 1rem;
+    }
+    .monto-total{
+        height: 3rem;
+        width: 30%;
+        font-size: 2rem;
+        padding: 20px;
+        border: solid 1px black
+    }
+    p{
+        margin: 0px;
+    }
+}
+
+
+
+// FOOTER
+
+
+.logos-footer{
+    display: flex;
+    justify-content: center;
+    background-color: #ff9ec9;
+    gap: 10px;
 }
