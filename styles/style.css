@@ -42,7 +42,7 @@ main {
   padding: 35px 35px 20px 35px;
 }
 .logoynombre img {
-  height: 155px;
+  height: 167px;
   width: 141px;
 }
 
@@ -59,7 +59,7 @@ main {
   justify-content: center;
 }
 .total-section .btn-confirmar {
-  height: 40px;
+  height: 2rem;
   width: 30%;
   margin-top: 30px;
   background-color: #ef6c9a;
@@ -76,6 +76,17 @@ main {
   width: 88%;
   font-size: 2rem;
 }
+.total-section .vaciar-carrito {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 30%;
+  background-color: #000000;
+  color: pink;
+  font-size: 1rem;
+  margin-top: 20px;
+}
 
 .cards {
   display: flex;
@@ -83,7 +94,7 @@ main {
   align-items: center;
   flex-wrap: wrap;
   gap: 30px;
-  margin-top: 40px;
+  margin: 50px 0px;
 }
 .cards .card {
   display: flex;
@@ -122,18 +133,35 @@ main {
 .cards .card .btn-agregar {
   display: flex;
   height: 2rem;
-  width: 50%;
   margin-bottom: 1rem;
   background-color: rgb(0, 0, 0);
   font-size: 1rem;
   color: white;
   justify-content: center;
   align-items: center;
+  width: 80%;
   transition: 0.8s;
 }
 .cards .card .btn-agregar:hover {
   background-color: #ff9ec9;
   color: black;
+}
+.cards .card .btn-eliminar {
+  display: flex;
+  height: 2rem;
+  width: 80%;
+  margin-bottom: 1rem;
+  background-color: rgb(134, 0, 0);
+  font-size: 0.7rem;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  transition: 0.8s;
+}
+.cards .card .btn-eliminar:hover {
+  background-color: #b90000;
+  color: rgb(255, 255, 255);
 }
 
 .compra {
@@ -163,6 +191,32 @@ main {
 }
 .compra p {
   margin: 0px;
+}
+
+.carrito-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 20px;
+}
+.carrito-section .item-carrito {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 88%;
+  border: 1px solid black;
+  transition: 0.8s;
+}
+.carrito-section .item-carrito img {
+  height: 150px;
+  width: 150px;
+}
+.carrito-section .item-carrito:hover {
+  box-shadow: -2px 2px 5px 3px #ff9ec9;
+  transition: 0.8s;
 }
 
 .logos-footer {

@@ -46,6 +46,10 @@ const productos = [{id: 1, nombre:"Chicle", precio: 10, img:"../assets/chicle.we
                     {id: 4, nombre:"Pipas", precio: 200, img:"../assets/pipas.webp"}
 ]
 
+let carrito = []
+let carroconfirmado = []
+let total = []
+
 productos.forEach((producto) => {
     let card = document.createElement("article")
     card.className = "card"
@@ -54,26 +58,56 @@ productos.forEach((producto) => {
                             <h3 class="nombre-producto">${producto.nombre}</h3>
                             <h4 class="valor-card">VALOR: $${producto.precio}</h4>
                         </div>`;
-                        // <button class="btn-agregar">AGREGAR</button>  
-                        // <input type="text" class="input-cantidad" value=""></input>
     cards.appendChild(card)
 
     let agregar = document.createElement("button")
     agregar.classList = "btn-agregar"
     agregar.innerText = "AGREGAR"      
     card.appendChild(agregar)
-
     agregar.addEventListener("click", () =>{
         carrito.push({
             id: producto.id,
             nombre: producto.nombre,
-            precio: producto.precio
+            precio: producto.precio,
+            img: producto.img
         })
+
         localStorage.setItem("carritoStorage", JSON.stringify(carrito))
-    })   
+
+        carroconfirmado = JSON.parse(localStorage.getItem("carritoStorage"));
+        console.log(carroconfirmado)
+
+        carritosection.style.display = "flex"
+        carritosection.innerHTML = ""
+
+        total = carroconfirmado.reduce((acc,el)=>acc + el.precio, 0)
+        console.log(total)
+        totalproductos.innerHTML = `TOTAL A PAGAR: $${total}`
+
+        carroconfirmado.forEach((producto) => {
+            let itemcarrito = document.createElement("div")
+            itemcarrito.className = "item-carrito"
+            itemcarrito.innerHTML = `<img src="${producto.img}" class="item-igm"></img>
+                                        <h4>${producto.nombre}</h4>
+                                        <h5>$${producto.precio}</h5>`
+            carritosection.appendChild(itemcarrito)     
+        })
+    
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Producto agregado',
+        showConfirmButton: false,
+        timer: 600,
+        })
+})
 })
 
-const carrito = []
+let carritosection = document.createElement("section")
+carritosection.className = "carrito-section"
+carritosection.style.display = "none"
+main.appendChild(carritosection)
+
 
 let totalsection = document.createElement("section")
 totalsection.className = "total-section"
@@ -81,19 +115,45 @@ main.appendChild(totalsection)
 let confirmarCompra = document.createElement("button")
 confirmarCompra.className = "btn-confirmar"
 confirmarCompra.innerText = "CONFIRMAR CARRITO"
+confirmarCompra.onclick = () =>{
+    carroconfirmado.length >=1 ? Swal.fire({
+        title: `PERFECTO, EL TOTAL ES: $${total}`,
+        text: "¿Desea abonar o seguir comprando?",
+        icon: 'success',
+        showDenyButton: true,
+        denyButtonText: `SEGUIR COMPRANDO`,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'ABONAR'
+    })
+    : Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'EL CARRITO ESTÁ VACÍO',
+        showConfirmButton: false,
+    })
+}
 totalsection.appendChild(confirmarCompra)
+let vaciarCarrito = document.createElement("button")
+vaciarCarrito.className = "vaciar-carrito"
+vaciarCarrito.innerText = "VACIAR CARRITO"
+totalsection.appendChild(vaciarCarrito)
+vaciarCarrito.onclick = () =>{
+    localStorage.removeItem("carritoStorage")
+    totalproductos.innerHTML = ""
+    carroconfirmado = []
+    carritosection.style.display = "none"
+    Swal.fire({
+        position: 'center',
+        icon: 'info',
+        title: 'CARRITO VACIADO',
+        showConfirmButton: false,
+        timer: 600,
+        })
+}
 let totalproductos = document.createElement("div")
 totalproductos.className = "total-productos"
 totalsection.appendChild(totalproductos)
 
-const carroconfirmado = 
-
-confirmarCompra.addEventListener("click", confirmacion = () => {const carroconfirmado = JSON.parse(localStorage.getItem("carritoStorage"));
-console.log(carroconfirmado)
-const total = carroconfirmado.reduce((acc,el)=>acc + el.precio, 0)
-console.log(total)
-totalproductos.innerHTML = `TOTAL A PAGAR: $${total}`
-})
 
 // FOOTER
 
@@ -111,5 +171,4 @@ footer.appendChild(logosFooter)
 for(const icon of iconsFooter){
     let iconos = document.createElement("i")
     iconos.innerHTML = `${icon.red}`
-    logosFooter.appendChild(iconos)
-}
+    logosFooter.appendChild(iconos)}
