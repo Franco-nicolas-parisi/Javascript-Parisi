@@ -1,0 +1,9 @@
+[   {"id": 1, "nombre":"Chicle", "precio": 10, "img":"../assets/chicle.webp"},
+    {"id": 2, "nombre":"Chocolate", "precio": 100, "img":"../assets/chocolate.jpg"},
+    {"id": 3, "nombre":"Caramelo", "precio": 15, "img":"../assets/caramelo.jpg"},
+    {"id": 4, "nombre":"Pipas", "precio": 200, "img":"../assets/pipas.webp"},
+    {"id": 5, "nombre":"Rocklets", "precio": 350, "img":"../assets/rocklets.jpeg"},
+    {"id": 6, "nombre":"Alfajor Aguila", "precio": 300, "img":"../assets/aguila.jpg"},
+    {"id": 7, "nombre":"Tita", "precio": 150, "img":"../assets/tita.jpg"},
+    {"id": 8, "nombre":"Rodhesia", "precio": 250, "img":"../assets/rhodesia.jpg"}
+]

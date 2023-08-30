@@ -40,68 +40,79 @@ let cards = document.createElement("section")
 cards.className = "cards"
 main.appendChild(cards)
 
-const productos = [{id: 1, nombre:"Chicle", precio: 10, img:"../assets/chicle.webp"},
-                    {id: 2, nombre:"Chocolate", precio: 100, img:"../assets/chocolate.jpg"},
-                    {id: 3, nombre:"Caramelo", precio: 15, img:"../assets/caramelo.jpg"},
-                    {id: 4, nombre:"Pipas", precio: 200, img:"../assets/pipas.webp"}
-]
+
+const obtenerProductos = async() => {
+    const res = await fetch("productos.json");
+    const productos = await res.json();
+
+    productos.forEach((producto) => {
+        let card = document.createElement("article")
+        card.className = "card"
+        card.innerHTML = `<img src="${producto.img}" class="card-img"></img>
+                            <div class="card-body">
+                                <h3 class="nombre-producto">${producto.nombre}</h3>
+                                <h4 class="valor-card">VALOR: $${producto.precio}</h4>
+                            </div>`;
+        cards.appendChild(card)
+    
+        let agregar = document.createElement("button")
+        agregar.classList = "btn-agregar"
+        agregar.innerText = "AGREGAR"      
+        card.appendChild(agregar)
+        agregar.addEventListener("click", () =>{
+            carrito.push({
+                id: producto.id,
+                nombre: producto.nombre,
+                precio: producto.precio,
+                img: producto.img
+            })
+    
+            localStorage.setItem("carritoStorage", JSON.stringify(carrito))
+    
+            carroconfirmado = JSON.parse(localStorage.getItem("carritoStorage"));
+            console.log(carroconfirmado)
+    
+            carritosection.style.display = "flex"
+            carritosection.innerHTML = ""
+    
+            total = carroconfirmado.reduce((acc,el)=>acc + el.precio, 0)
+            console.log(total)
+            totalproductos.innerHTML = `TOTAL A PAGAR: $${total}`
+    
+            carroconfirmado.forEach((producto) => {
+                let itemcarrito = document.createElement("div")
+                itemcarrito.className = "item-carrito"
+                itemcarrito.innerHTML = `<img src="${producto.img}" class="item-igm"></img>
+                                            <h4>${producto.nombre}</h4>
+                                            <h5>$${producto.precio}</h5>`
+                carritosection.appendChild(itemcarrito)     
+            })
+        
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Producto agregado',
+            showConfirmButton: false,
+            timer: 600,
+            })
+    })
+    })
+
+}
+
+obtenerProductos()
+
+// const productos = [{id: 1, nombre:"Chicle", precio: 10, img:"../assets/chicle.webp"},
+//                     {id: 2, nombre:"Chocolate", precio: 100, img:"../assets/chocolate.jpg"},
+//                     {id: 3, nombre:"Caramelo", precio: 15, img:"../assets/caramelo.jpg"},
+//                     {id: 4, nombre:"Pipas", precio: 200, img:"../assets/pipas.webp"}
+// ]
 
 let carrito = []
 let carroconfirmado = []
 let total = []
 
-productos.forEach((producto) => {
-    let card = document.createElement("article")
-    card.className = "card"
-    card.innerHTML = `<img src="${producto.img}" class="card-img"></img>
-                        <div class="card-body">
-                            <h3 class="nombre-producto">${producto.nombre}</h3>
-                            <h4 class="valor-card">VALOR: $${producto.precio}</h4>
-                        </div>`;
-    cards.appendChild(card)
 
-    let agregar = document.createElement("button")
-    agregar.classList = "btn-agregar"
-    agregar.innerText = "AGREGAR"      
-    card.appendChild(agregar)
-    agregar.addEventListener("click", () =>{
-        carrito.push({
-            id: producto.id,
-            nombre: producto.nombre,
-            precio: producto.precio,
-            img: producto.img
-        })
-
-        localStorage.setItem("carritoStorage", JSON.stringify(carrito))
-
-        carroconfirmado = JSON.parse(localStorage.getItem("carritoStorage"));
-        console.log(carroconfirmado)
-
-        carritosection.style.display = "flex"
-        carritosection.innerHTML = ""
-
-        total = carroconfirmado.reduce((acc,el)=>acc + el.precio, 0)
-        console.log(total)
-        totalproductos.innerHTML = `TOTAL A PAGAR: $${total}`
-
-        carroconfirmado.forEach((producto) => {
-            let itemcarrito = document.createElement("div")
-            itemcarrito.className = "item-carrito"
-            itemcarrito.innerHTML = `<img src="${producto.img}" class="item-igm"></img>
-                                        <h4>${producto.nombre}</h4>
-                                        <h5>$${producto.precio}</h5>`
-            carritosection.appendChild(itemcarrito)     
-        })
-    
-    Swal.fire({
-        position: 'top-end',
-        icon: 'success',
-        title: 'Producto agregado',
-        showConfirmButton: false,
-        timer: 600,
-        })
-})
-})
 
 let carritosection = document.createElement("section")
 carritosection.className = "carrito-section"
@@ -153,7 +164,6 @@ vaciarCarrito.onclick = () =>{
 let totalproductos = document.createElement("div")
 totalproductos.className = "total-productos"
 totalsection.appendChild(totalproductos)
-
 
 // FOOTER
 
