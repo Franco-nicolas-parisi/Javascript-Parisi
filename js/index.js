@@ -102,12 +102,6 @@ const obtenerProductos = async() => {
 
 obtenerProductos()
 
-// const productos = [{id: 1, nombre:"Chicle", precio: 10, img:"../assets/chicle.webp"},
-//                     {id: 2, nombre:"Chocolate", precio: 100, img:"../assets/chocolate.jpg"},
-//                     {id: 3, nombre:"Caramelo", precio: 15, img:"../assets/caramelo.jpg"},
-//                     {id: 4, nombre:"Pipas", precio: 200, img:"../assets/pipas.webp"}
-// ]
-
 let carrito = []
 let carroconfirmado = []
 let total = []
